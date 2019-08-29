@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_language_configuration/ui/home_page.dart';
-import 'package:flutter_language_configuration/utils/shared_preferences.dart';
 
 import 'library/language.dart';
 

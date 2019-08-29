@@ -10,7 +10,7 @@ class SecondPage extends StatefulWidget {
 class _SecondPageState extends State<SecondPage> {
 
   Language _language = Language();
-  SessionManager sessionManager = SessionManager();
+  SharedPreferencesHelper sessionManager = SharedPreferencesHelper();
 
   String idLanguage = "id";
   String enLanguage = "en";
@@ -44,7 +44,7 @@ class _SecondPageState extends State<SecondPage> {
                     RaisedButton(
                       onPressed: () {
                         setState(() {
-                          sessionManager.savePref(idLanguage);
+                          sessionManager.setLanguageCode(idLanguage);
                           loadLanguagesId();
                         });
                       },
@@ -59,7 +59,7 @@ class _SecondPageState extends State<SecondPage> {
                     RaisedButton(
                       onPressed: () {
                         setState(() {
-                          sessionManager.savePref(enLanguage);
+                          sessionManager.setLanguageCode(enLanguage);
                           loadLanguagesEn();
                         });
 
