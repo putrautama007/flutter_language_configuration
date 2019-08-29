@@ -10,6 +10,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class Language {
   static Language _singleton = Language._internal();
 
+
   factory Language() {
     return _singleton;
   }
@@ -30,7 +31,9 @@ class Language {
     else
       content = await rootBundle.loadString("assets/languages/${preferences.getString("lang")}/$fileName.json");
     Map<String, dynamic> configAsMap = json.decode(content);
-    appConfig.addAll(configAsMap);
+    configAsMap.forEach((String key, dynamic value) {
+      this.appConfig[key] = value;
+    });
     return _singleton;
   }
 
@@ -51,8 +54,33 @@ class Language {
 
   /// Reads a value from persistent storage, throwing an exception if it's not a
   /// String.
-  String getString(String key) => appConfig[key];
 
+  String getString(String key, {List<String> args}) {
+    String res = this._resolve(key, this.appConfig);
+    if (args != null) {
+      args.forEach((String str) {
+        res = res.replaceFirst(RegExp(r'{}'), str);
+      });
+    }
+    return res;
+  }
+
+  String _resolve(String path, dynamic obj) {
+    List<String> keys = path.split('.');
+
+    if (keys.length > 1) {
+      for (int index = 0; index <= keys.length; index++) {
+        if (obj.containsKey(keys[index]) && obj[keys[index]] is! String) {
+          return _resolve(
+                  keys.sublist(index + 1, keys.length).join('.'), obj[keys[index]]);
+        }
+
+        return obj[path] ?? path;
+      }
+    }
+
+    return obj[path] ?? path;
+  }
   /// Write a value from persistent storage, throwing an exception if it's not
   /// the correct type
   void setValue(key, value) => value.runtimeType != appConfig[key].runtimeType

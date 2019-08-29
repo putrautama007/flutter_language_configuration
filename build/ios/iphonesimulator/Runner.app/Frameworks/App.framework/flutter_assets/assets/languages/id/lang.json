@@ -1,4 +1,6 @@
 {
-  "home": "Halaman Rumah",
-  "second": "Halaman Kedua"
+  "home" : {
+    "home": "Halaman Rumah",
+    "second": "Halaman Kedua"
+  }
 }

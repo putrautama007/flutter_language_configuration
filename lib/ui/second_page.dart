@@ -28,7 +28,7 @@ class _SecondPageState extends State<SecondPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(_language.getString("second")),
+        title: Text(_language.getString("home.second")),
       ),
       body: Container(
         child: Stack(

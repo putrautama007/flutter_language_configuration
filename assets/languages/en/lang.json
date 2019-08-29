@@ -1,4 +1,6 @@
 {
-  "home": "Home Page",
-  "second": "Second Page"
+  "home": {
+    "home": "Home Page",
+    "second": "Second Page"
+  }
 }

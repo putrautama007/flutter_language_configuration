@@ -13,10 +13,10 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("${_language.getString("home")}"),
+        title: Text("${_language.getString("home.home")}"),
       ),
       body: Center(
-        child: Text("${_language.getString("home")}"),
+        child: Text("${_language.getString("home.home")}"),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
